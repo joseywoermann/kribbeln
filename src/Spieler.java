@@ -1,5 +1,3 @@
-//import java.util.Scanner;
-
 public class Spieler {
 
     private int punktestand = 0;
@@ -7,7 +5,6 @@ public class Spieler {
     private int augenzahl = 0;
     private String aufgabenstellung = null;
     private String ergebnis = null;
-    //private boolean nochmalWuerfelnJaNein = true;
 
     private Spieler gegner;
     private Aufgabe aufgabe;
@@ -34,6 +31,9 @@ public class Spieler {
      * Aufgabe "aussuchen" und starten (Start-Methode)
      */
     public void aufgabeStarten() {
+      // Würfel vom letzten Mal zurücksetzen
+      wuerfel.reset();
+      
       this.aufgabenstellung = aufgabe.zufallsAufgabeAussuchen();
       System.out.println("Deine Aufgabe: " + this.aufgabenstellung + " und versuche, eine möglichst hohe Auganzahl zu erreichen.");
       this.aufgabeDurchfuehren();
@@ -85,6 +85,7 @@ public class Spieler {
       int weiss = wuerfel.getWeiss();
       int schwarz = wuerfel.getSchwarz();
       aufgabe.aufgabeAuswerten(pAugenzahl, blau, gelb, gruen, rot, weiss, schwarz);
+      // hier muss noch ausgewertet werden, wer gewonnen hat
     }
 
     /**

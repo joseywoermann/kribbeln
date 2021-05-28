@@ -11,16 +11,16 @@
     private String anzahlWuerfeBenoetigteFarbeString;
 
     /**
-     * Eine Aufgabenstellung ist ein Array, in dem die Position eines Elements
+     * Eine Aufgabe ist ein Array, in dem die Position eines Elements
      * bestimmt, wie es interpretiert werden soll
-     * (<welche farbe> <anzahl> <gleich / unterschiedlich> <Aufgabenstellung>)
+     * <welche farbe> <anzahl> <gleich / unterschiedlich> <Aufgabenstellung als Satz>
      */
     private String[][] aufgaben = {
         {
-            "rot",
-            "eins",
-            "mindestens",
-            "Würfele mindestens einmal rot."
+            "rot",                  // farbe
+            "eins",                 // anzahl
+            "gleich",               // brauchen wir das überhaupt?
+            "Würfele einmal rot."   // Aufgabenstellung
         },
         {
             "blau",
@@ -33,6 +33,12 @@
             "acht",
             "gleich",
             "Würfele achtmal grün"
+        },
+        {
+            "schwarz",
+            "0",
+            "gleich",
+            "Würfele kein schwarz"
         }/*,
         {         // prinzipiell möglich, aber kompliziert zu implementieren
             "egal",
@@ -46,7 +52,7 @@
      * Constructor for objects of class Aufgabe
      */
     public Aufgabe() {
-        // Nichts notwendig
+        // Nix
     }
 
 
@@ -67,7 +73,6 @@
 
       aktuelleAufgabe = this.aufgabe;
       anzahlWuerfeBenoetigteFarbeString = aktuelleAufgabe[0];
-      //System.out.println(anzahlWuerfeBenoetigteFarbeString);
 
       switch (anzahlWuerfeBenoetigteFarbeString) {
         case "blau":

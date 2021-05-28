@@ -48,6 +48,25 @@ public class Wuerfel {
 
     }
 
+
+    public void reset() {
+        this.zahl = 0;
+        this.blaus = 0;
+        this.gelbs = 0;
+        this.gruens = 0;
+        this.rots = 0;
+        this.weisss = 0;
+        this.schwarzs = 0;
+
+        // Array zurücksetzen
+        // Für jedes Subarray im Array jedes Element auf null setzen
+        for (int i = 0; i < gewuerfelteFarben.length; i++) {
+            for (int j = 0; j < gewuerfelteFarben[i].length; j++) {
+                gewuerfelteFarben[i][j] = null;
+            }
+        }
+    }
+
     /**
      * Würfel 9 mal würfeln
      * @param pZahl
