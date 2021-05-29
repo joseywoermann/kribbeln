@@ -9,62 +9,35 @@ public class Wuerfel {
         "schwarz" // 5
     };
 
-    private String[][] gewuerfelteFarben = {
-      {
-        null, null, null, null, null, null, null, null, null
-      },
-      {
-        null, null, null, null, null, null, null, null, null
-      },
-      {
-        null, null, null, null, null, null, null, null, null
-      },
-      {
-        null, null, null, null, null, null, null, null, null
-      },
-      {
-        null, null, null, null, null, null, null, null, null
-      },
-      {
-        null, null, null, null, null, null, null, null, null
-      }
-    };
-
-    private int zahl = 0;
+    private int zahl        = 0;
 
     // Anzahl der geworfenen Zahlen
-    private int blaus = 0;
-    private int gelbs = 0;
-    private int gruens = 0;
-    private int rots = 0;
-    private int weisss = 0;
-    private int schwarzs = 0;
+    private int blaus       = 0;
+    private int gelbs       = 0;
+    private int gruens      = 0;
+    private int rots        = 0;
+    private int weisss      = 0;
+    private int schwarzs    = 0;
 
 
     /**
      * Constructor for objects of class Wuerfel
      */
     public Wuerfel() {
-
+        // Nichts
     }
 
-
+    /**
+     * Setzt alle Werte des Würfels zurück
+     */
     public void reset() {
-        this.zahl = 0;
-        this.blaus = 0;
-        this.gelbs = 0;
-        this.gruens = 0;
-        this.rots = 0;
-        this.weisss = 0;
-        this.schwarzs = 0;
-
-        // Array zurücksetzen
-        // Für jedes Subarray im Array jedes Element auf null setzen
-        for (int i = 0; i < gewuerfelteFarben.length; i++) {
-            for (int j = 0; j < gewuerfelteFarben[i].length; j++) {
-                gewuerfelteFarben[i][j] = null;
-            }
-        }
+        this.zahl       = 0;
+        this.blaus      = 0;
+        this.gelbs      = 0;
+        this.gruens     = 0;
+        this.rots       = 0;
+        this.weisss     = 0;
+        this.schwarzs   = 0;
     }
 
     /**
@@ -73,105 +46,46 @@ public class Wuerfel {
      * @return int
      */
     public int augenZahlWuerfeln() {
-      for (int i = 0; i < 9; i++) {
-        this.zahl = this.zahl + this.zufallsAugenzahlGenerieren();
-      }
-      return this.zahl;
+        for (int i = 0; i < 9; i++) {
+            this.zahl = this.zahl + this.zufallsAugenzahlGenerieren();
+        }
+        return this.zahl;
     }
 
 
     /**
-     * Hauptmethode für Farben; Daten aus Array in Integern speichern
-     * @param pZahl
-     * @return
-     */
-    public void farbenZaehlen() {
-      farbeWuerfelnUndZuordnen();
-      //blau
-      for (int i = 0; i < this.gewuerfelteFarben[0].length; i++) {
-        if (this.gewuerfelteFarben[0][i] == "blau") {
-          this.blaus++;
-        }
-      }
-
-      //gelb
-      for (int i = 0; i < this.gewuerfelteFarben[1].length; i++) {
-        if (this.gewuerfelteFarben[1][i] == "gelb") {
-          this.gelbs++;
-        }
-      }
-
-      //gruen
-      for (int i = 0; i < this.gewuerfelteFarben[2].length; i++) {
-        if (this.gewuerfelteFarben[2][i] == "grün") {
-          this.gruens++;
-        }
-      }
-
-      //rot
-      for (int i = 0; i < this.gewuerfelteFarben[3].length; i++) {
-        if (this.gewuerfelteFarben[3][i] == "rot") {
-          this.rots++;
-        }
-      }
-
-      //weiss
-      for (int i = 0; i < this.gewuerfelteFarben[4].length; i++) {
-        if (this.gewuerfelteFarben[4][i] == "weiß") {
-          this.weisss++;
-        }
-      }
-
-      //schwarz
-      for (int i = 0; i < this.gewuerfelteFarben[5].length; i++) {
-        if (this.gewuerfelteFarben[5][i] == "schwarz") {
-          this.schwarzs++;
-        }
-      }
-    }
-
-    /**
+     * Hauptmethode für Farben; Daten in Integern speichern
      * 9 Farben würfeln & zurodnen
      * @param pZahl
      * @return String[]
      */
-    public String[][] farbeWuerfelnUndZuordnen() {
-      for (int i = 0; i < 9; i++) { // 9mal würfeln
-        String farbe = this.zufallsFarbeGenerieren();
-        // gewürfelte Farbe zu Array zuordnen
-        /**
-         * BUG: Aktuell werden die farben an der Position ins Array gestellt,
-         * der wievielte Wurf es ist (ergobt ohne Beispiel keinen Sinn)
-         * Beispiel:
-         * der 3. Wurf ist "rot" => "rot" wird an die dritte Stelle ins Array gestellt, nicht an die erste.
-         * Das sorgt dafür, dass wenn z.B. alle Würfe "rot" sind, dass das Array überfließen könnte.
-         * // EDIT: Der Bug ist egal, weil die subarrays 9 lang sind
-         */
-        switch (farbe) {
-          case "blau":
-            this.gewuerfelteFarben[0][i] = farbe;
-            break;
-          case "gelb":
-            this.gewuerfelteFarben[1][i] = farbe;
-            break;
-          case "grün":
-            this.gewuerfelteFarben[2][i] = farbe;
-            break;
-          case "rot":
-            this.gewuerfelteFarben[3][i] = farbe;
-            break;
-          case "weiß":
-            this.gewuerfelteFarben[4][i] = farbe;
-            break;
-          case "schwarz":
-            this.gewuerfelteFarben[5][i] = farbe;
-            break;
-          default:
-            break;
+    public void farbenWuerfeln() {
+        for (int i = 0; i < 9; i++) { // 9mal würfeln
+            String farbe = this.zufallsFarbeGenerieren();
+
+            switch (farbe) {
+                case "blau":
+                    this.blaus++;
+                    break;
+                case "gelb":
+                    this.gelbs++;
+                    break;
+                case "grün":
+                    this.gruens++;
+                    break;
+                case "rot":
+                    this.rots++;
+                    break;
+                case "weiß":
+                    this.weisss++;
+                    break;
+                case "schwarz":
+                    this.schwarzs++;
+                    break;
+                default:
+                    break;
+            }
         }
-      }
-      //System.out.println(this.gewuerfelteFarben);
-      return this.gewuerfelteFarben;
     }
 
 
@@ -190,8 +104,8 @@ public class Wuerfel {
      * @return
      */
     public int zufallsAugenzahlGenerieren() {
-      int zahl = zufallsZahl(1, 6);
-      return zahl;
+        int zahl = zufallsZahl(1, 6);
+        return zahl;
     }
 
     /**
@@ -200,8 +114,8 @@ public class Wuerfel {
      * @param pOberesLimit Die höchste möglich Zahl.
      */
     public int zufallsZahl(int pUnteresLimit, int pOberesLimit) {
-      int zahl = (int)Math.round(Math.random() * (pOberesLimit - pUnteresLimit));
-      return zahl;
+        int zahl = (int)Math.round(Math.random() * (pOberesLimit - pUnteresLimit));
+        return zahl;
     }
 
 
@@ -212,7 +126,7 @@ public class Wuerfel {
      * @return
      */
     public int getBlau() {
-      return this.blaus;
+        return this.blaus;
     }
 
     /**
@@ -220,7 +134,7 @@ public class Wuerfel {
      * @return
      */
     public int getGelb() {
-      return this.gelbs;
+        return this.gelbs;
     }
 
     /**
@@ -228,7 +142,7 @@ public class Wuerfel {
      * @return
      */
     public int getGruen() {
-      return this.gruens;
+        return this.gruens;
     }
 
     /**
@@ -236,7 +150,7 @@ public class Wuerfel {
      * @return
      */
     public int getRot() {
-      return this.rots;
+        return this.rots;
     }
 
     /**
@@ -244,7 +158,7 @@ public class Wuerfel {
      * @return
      */
     public int getWeiss() {
-      return this.weisss;
+        return this.weisss;
     }
 
     /**
@@ -252,7 +166,7 @@ public class Wuerfel {
      * @return
      */
     public int getSchwarz() {
-      return this.schwarzs;
+        return this.schwarzs;
     }
 
 }
