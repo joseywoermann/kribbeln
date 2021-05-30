@@ -1,9 +1,6 @@
 public class Aufgabe {
 
-    private String      aufgabenstellung;
-    private String[]    aufgabe;
-    private int         anzahlWuerfeBenoetigteFarbe;            //TODO: Bessere Namen vergeben
-    private String      anzahlWuerfeBenoetigteFarbeAlsString;
+    private String[] aufgabe;
 
     /**
      * Eine Aufgabe ist ein Array, in dem die Position eines Elements
@@ -35,7 +32,7 @@ public class Aufgabe {
             "gleich",
             "Würfele kein schwarz"
         }/*,
-        {         // prinzipiell möglich, aber kompliziert zu implementieren
+        {   // prinzipiell möglich, aber komplizierter zu implementieren
             "egal",
             "zwei",
             "gleich",
@@ -56,18 +53,10 @@ public class Aufgabe {
      */
     public String zufallsAufgabeAussuchen() {
         int zahl = (int)Math.round(Math.random() * (1 - 0));
-        aufgabenstellung = aufgaben[zahl][3];
+        String aufgabenstellung = aufgaben[zahl][3];
         this.aufgabe = aufgaben[zahl];
 
         return aufgabenstellung;
-    }
-
-    /**
-     * Aktuell benötigte farbe ausgeben
-     */
-    public String getBenoetigteFarbe() {
-        String farbe = this.aufgabe[0];
-        return farbe;
     }
 
     /**
@@ -79,37 +68,36 @@ public class Aufgabe {
         System.out.println("Ergebnis wird ausgewertet...");
         wait(1);
 
-        anzahlWuerfeBenoetigteFarbeAlsString = this.aufgabe[0];
-
-        switch (anzahlWuerfeBenoetigteFarbeAlsString) {
+        int wuerfeDerBenoetigtenFarbe = 100000000; // Irgendeine sehr große Zahl, damit es einfacher ist herauszufinden, dass etwas schiefgelaufen ist.
+        switch (getBenoetigteFarbe()) {
             case "blau":
-                anzahlWuerfeBenoetigteFarbe = pBlau;
+                wuerfeDerBenoetigtenFarbe = pBlau;
                 break;
             case "gelb":
-                anzahlWuerfeBenoetigteFarbe = pGelb;
+                wuerfeDerBenoetigtenFarbe = pGelb;
                 break;
             case "grün":
-                anzahlWuerfeBenoetigteFarbe = pGruen;
+                wuerfeDerBenoetigtenFarbe = pGruen;
                 break;
             case "rot":
-                anzahlWuerfeBenoetigteFarbe = pRot;
+                wuerfeDerBenoetigtenFarbe = pRot;
                 break;
             case "weiß":
-                anzahlWuerfeBenoetigteFarbe = pWeiss;
+                wuerfeDerBenoetigtenFarbe = pWeiss;
                 break;
             case "schwarz":
-                anzahlWuerfeBenoetigteFarbe = pSchwarz;
+                wuerfeDerBenoetigtenFarbe = pSchwarz;
                 break;
             default:
                 break;
         }
 
-        //System.out.println(zahlZuString(anzahlWuerfeBenoetigteFarbe));
+        //System.out.println(zahlZuString(wuerfeDerBenoetigtenFarbe));
 
-        if (anzahlWuerfeBenoetigteFarbe == stringZuZahl(this.aufgabe[1])) {
-            System.out.println("Du hast deine Aufgabe erfolgreich erfüllt.\nDu hattest " + anzahlWuerfeBenoetigteFarbe + " " + this.aufgabe[0] + "e Felder.\nDie Augenzahl beträgt " + pAugenzahl + ".");
+        if (wuerfeDerBenoetigtenFarbe == stringZuZahl(this.aufgabe[1])) {
+            System.out.println("Du hast deine Aufgabe erfolgreich erfüllt.\nDu hattest " + wuerfeDerBenoetigtenFarbe + " " + getBenoetigteFarbe() + "e Felder.\nDie Augenzahl beträgt " + pAugenzahl + ".");
         } else {
-            System.out.println("Du hast deine Aufgabe nicht erfüllt!\nDu hattest " + anzahlWuerfeBenoetigteFarbe + " " + this.aufgabe[0] + "e Felder.\nDie Augenzahl beträgt " + pAugenzahl + ".");
+            System.out.println("Du hast deine Aufgabe nicht erfüllt!\nDu hattest " + wuerfeDerBenoetigtenFarbe + " " + getBenoetigteFarbe() + "e Felder.\nDie Augenzahl beträgt " + pAugenzahl + ".");
         }
     }
 
@@ -174,6 +162,14 @@ public class Aufgabe {
           break;
       }
       return textAlsZahl;
+    }
+
+    /**
+     * Aktuell benötigte farbe ausgeben
+     */
+    public String getBenoetigteFarbe() {
+        String farbe = this.aufgabe[0];
+        return farbe;
     }
 
     /**

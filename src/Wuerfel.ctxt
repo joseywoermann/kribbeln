@@ -17,6 +17,7 @@ comment13.target=int\ getSchwarz()
 comment13.text=\r\n\ Die\ Anzahl\ der\ schwarzen\ Seiten\ ausgeben\r\n\ @return\r\n
 comment2.params=
 comment2.target=void\ reset()
+comment2.text=\r\n\ Setzt\ alle\ Werte\ des\ W\u00FCrfels\ zur\u00FCck\r\n
 comment3.params=
 comment3.target=int\ augenZahlWuerfeln()
 comment3.text=\r\n\ W\u00FCrfel\ 9\ mal\ w\u00FCrfeln\r\n\ @param\ pZahl\r\n\ @return\ int\r\n
