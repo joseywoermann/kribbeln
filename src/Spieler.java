@@ -4,7 +4,7 @@ public class Spieler {
     private int     platzierung = 0;
     private int     augenzahl   = 0;
     private String  aufgabenstellung;
-    private String  ergebnis;
+    private String  ergebnis;           // Gewonnen / Verloren
 
     private Spieler gegner;
     private Aufgabe aufgabe;
@@ -14,9 +14,12 @@ public class Spieler {
     /**
      * Constructor for objects of class Spieler
      */
-    public Spieler(Aufgabe pAufgabe, Wuerfel pWuerfel) {
-        this.aufgabe = pAufgabe;
-        this.wuerfel = pWuerfel;
+    public Spieler(/*Aufgabe pAufgabe, Wuerfel pWuerfel*/) {
+        //this.aufgabe = pAufgabe;
+        //this.wuerfel = pWuerfel;
+
+        this.aufgabe = new Aufgabe();
+        this.wuerfel = new Wuerfel();
         tutorial();
     }
 
@@ -37,7 +40,7 @@ public class Spieler {
 
         this.aufgabenstellung = aufgabe.zufallsAufgabeAussuchen();
         System.out.println("Deine Aufgabe: " + this.aufgabenstellung + " und versuche dabei, eine möglichst hohe Auganzahl zu erreichen.");
-
+        leereZeile(2);
         // Wait for 1 second
         wait(1);
         this.aufgabeDurchfuehren();
@@ -59,6 +62,7 @@ public class Spieler {
         // Spieler fragen, ob er nochmal würfeln will, oder den Zug beenden will
         wait(1);
         System.out.println("Möchtest du nochmal würfel, um dein Ergebnis zu verbessern? Dies kann dein Ergebnis aber auch verschlechtern, wenn du dann deine Aufgabe nichtmehr erfüllen kannst.\nWenn du nochmal würfeln willst, führe die Methode \"nochmalWuerfeln()\" aus, wenn nicht, führe \"zugBeenden()\" aus");
+        leereZeile(2);
     }
 
     /**
@@ -76,6 +80,7 @@ public class Spieler {
         // ausgeben, was gerade gewürfelt wurde
         System.out.println("Augenzahl: " + augenzahlTMP);
         System.out.println("Anzahl der " + aufgabe.getBenoetigteFarbe() + "en Würfe: " + this.getFarbWuerfe());
+        leereZeile(2);
     }
 
     // Auswerten
@@ -89,7 +94,7 @@ public class Spieler {
      * @param pAugenzahl
      */
     public void ergebnisseWeiterleiten(int pAugenzahl) {
-        // ANzahl der jeweils gewürfelten Farben "nachschauen""
+        // Anzahl der jeweils gewürfelten Farben "nachschauen""
         int blau      = wuerfel.getBlau();
         int gelb      = wuerfel.getGelb();
         int gruen     = wuerfel.getGruen();
@@ -140,12 +145,13 @@ public class Spieler {
     }
 
     /**
-     * Eine Anleitung
+     * Eine Anleitung (WIP)
      */
     public void tutorial() {
         System.out.println("Anleitung");
         System.out.println("1. Bitte führe gegnerFestlegen() aus, um einen Gegner festzulegen.");
         System.out.println("2. Führe aufgabeStarten() aus, um deine Aufgabe zu starten.");
+        leereZeile(2);
     }
 
     /**
@@ -180,6 +186,16 @@ public class Spieler {
     }
 
     /**
+     * Macht eine leere Zeile
+     * @param pSeconds Wie viele leere Zeilen willst du?
+     */
+    public void leereZeile(int pAnzahl) {
+        for (int i = 0; i < pAnzahl; i++) {
+            System.out.println("");
+        }
+    }
+
+    /**
      * Pausiert das Programm
      * @param pSeconds Wie viele Sekunden lang soll pausiert werden?
      */
@@ -189,5 +205,13 @@ public class Spieler {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    // Würefel und Aufgabe sichtbar machen
+    public Wuerfel getWuerfel() {
+        return this.wuerfel;
+    }
+    public Aufgabe getAufgabe() {
+        return this.aufgabe;
     }
 }
