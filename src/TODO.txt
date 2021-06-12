@@ -1,4 +1,3 @@
-- Multiplikator einbauen
-- Limit wie oft man würfeln kann
-- "Bereiche" einfügen => Statt "3x rot" "2 - 4x rot"
-- ???
+- Multiplikator einbauen ?
+- Limitieren, wie oft man würfeln kann ?
+- "Bereiche" einfügen => Statt "3x rot" "2 - 4x rot" ?
