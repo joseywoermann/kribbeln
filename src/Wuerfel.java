@@ -57,7 +57,6 @@ public class Wuerfel {
      * Hauptmethode für Farben; Daten in Integern speichern
      * 9 Farben würfeln & zurodnen
      * @param pZahl
-     * @return String[]
      */
     public void farbenWuerfeln() {
         for (int i = 0; i < 9; i++) { // 9mal würfeln
