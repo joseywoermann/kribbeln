@@ -66,6 +66,7 @@ public class Aufgabe {
     public void aufgabeAuswerten(int pAugenzahl, int pBlau, int pGelb, int pGruen, int pRot, int pWeiss, int pSchwarz) {
 
         System.out.println("Ergebnis wird ausgewertet...");
+        leereZeile(2);
         wait(1);
 
         int wuerfeDerBenoetigtenFarbe = 100000000; // Irgendeine sehr große Zahl, damit es einfacher ist herauszufinden, dass etwas schiefgelaufen ist.
@@ -99,6 +100,7 @@ public class Aufgabe {
         } else {
             System.out.println("Du hast deine Aufgabe nicht erfüllt!\nDu hattest " + wuerfeDerBenoetigtenFarbe + " " + getBenoetigteFarbe() + "e Felder.\nDie Augenzahl beträgt " + pAugenzahl + ".");
         }
+        leereZeile(2);
     }
 
 
@@ -181,6 +183,16 @@ public class Aufgabe {
             Thread.sleep(pSeconds * 1000);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     * Macht eine leere Zeile
+     * @param pSeconds Wie viele leere Zeilen willst du?
+     */
+    public void leereZeile(int pAnzahl) {
+        for (int i = 0; i < pAnzahl; i++) {
+            System.out.println("");
         }
     }
 }
